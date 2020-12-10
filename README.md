@@ -7,3 +7,41 @@ VGG:s fullständiga namn är Visual Geometry Group, som tillhör Institutionen f
     
     Denna bild används när vi introducerar VGG19. Den innehåller mycket information.
 
+        🎭"Installerar VGG19-arkitekturen.
+        Referens:
+        - [Mycket djupa konvolutionsnätverk för storskalig bildigenkänning] (
+            https://arxiv.org/abs/1409.1556) (ICLR 2015)
+        Som standard laddar den vikter som är förutbildade på ImageNet. Kontrollera "vikter" för
+        andra alternativ.
+        Denna modell kan byggas både med 'channel_first' dataformat
+        (kanaler, höjd, bredd) eller 'channel_last' dataformat (höjd, bredd, kanaler).
+        Standardinmatningsstorleken för denna modell är 224x224.
+
+        Obs!👍 Varje Keras-program förväntar sig en specifik typ av förbehandling av ingångar.
+        För VGG19, ring `tf.keras.applications.vgg19.preprocess_input` på din
+        ingångar innan du skickar dem till modellen.
+        Argument:
+            include_top: om de 3 fullt anslutna ska inkluderas lager överst i nätverket.
+            vikter: en av "Ingen" (slumpmässig initialisering), 'imagenet' (förutbildning på ImageNet), eller sökvägen till viktsfilen som ska laddas.
+            input_tensor: valfri Keras-tensor(dvs. utdata från `lager.Input ()`) att använda som bildingång för modellen.
+            input_shape: valfri form tuple, bara för att anges om `include_top 'är Falsk (annars är inmatningsformen
+            måste vara '(224, 224, 3)'  (med 'channel_last' dataformat) eller `(3, 224, 224)` (med dataformat `kanaler_först ').
+            Den borde ha exakt 3 ingångskanaler,   och bredd och höjd bör inte vara mindre än 32.
+            T.ex. "(200, 200, 3)" skulle vara ett giltigt värde.
+
+            pooling: Valfritt poolningsläge för extrahering av funktioner när "include_top" är "False".
+            ✔- 'Ingen' betyder att produktionen från modellen blir
+                4D-tensorutgången från
+                sista konvolutionella blocket.
+            ✔- "genomsnitt" betyder den globala genomsnittliga poolen
+                kommer att tillämpas på utdata från
+                sista konvolutionsblocket, och därmed
+                produktionen av modellen kommer att vara en 2D-tensor.
+            ✔- "max" betyder att global maxpooling kommer att vara ansökt.
+
+            klasser: valfritt antal klasser för att klassificera bilder
+            in, bara för att specificeras om `include_top 'är sant, och om inget argument för "vikter" anges.
+
+            classifier_activation: A `str` eller kan kallas. Aktiveringsfunktionen som ska användas på det "översta" skiktet. Ignoreras om inte 'include_top = True'. 
+            Uppsättning `classifier_activation = Ingen 'för att returnera logiterna för" topp "-skiktet.
+
