@@ -1,7 +1,8 @@
 import os
 import tensorflow as tf
 import numpy as np
-import config
+import utils.config as config
+from sklearn.preprocessing import LabelEncoder
 
 def train_valid_generator(
     IMAGE_SIZE = config.IMAGE_SIZE[:-1],
@@ -9,27 +10,29 @@ def train_valid_generator(
     data_dir = config.DATA_DIR,
     data_augmentation = config.AUGMENTATION):
 
-    data_kwargs = dict(
+    datagen_kwargs = dict(
         rescale=1./255,
-        validation_split=0.20)
+        validation_split=0.20
+        )
     
     dataflow_kwargs = dict(
         target_size = IMAGE_SIZE,
         batch_size = BATCH_SIZE,
         interpolation = "bilinear"
-    )
+        )
 
     valid_datagen = tf.keras.preprocessing.image.ImageDataGenerator(**datagen_kwargs)
 
     valid_generator = valid_datagen.flow_from_directory(
         directory=data_dir,
-        subset="validation",
+        subset="validation", 
         shuffle=False,
-        **datagen_kwargs
+        **dataflow_kwargs
     )
 
+
     if data_augmentation:
-        train_datagen = tf.keras.preprocessing.image.ImageDataGenerator(
+        train_datagen=tf.keras.preprocessing.image.ImageDataGenerator(
             rotation_range=40,
             horizontal_flip=True,
             width_shift_range=0.2,
@@ -50,9 +53,8 @@ def train_valid_generator(
     )
 
     return  train_generator, valid_generator
+    
 
-
- 
 def hantera_input_data(input_image):
      """[Konverterar ingången till förväntad dimension]
 

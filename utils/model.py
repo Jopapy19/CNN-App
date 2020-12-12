@@ -1,7 +1,13 @@
+"""
+Author: @Jopapy19  https://github.com/Jopapy19/CNN-App
+Date: 2020/12-11 Umeå
+
+"""
+
 import os
 import tensorflow as tf
 import numpy as np
-import config
+import utils.config as config
 
 def save_vgg_19_model(input_shape=config.IMAGE_SIZE): # Main Transfer Learning
     model = tf.keras.applications.vgg19.VGG19(
@@ -52,6 +58,34 @@ def custom_model(CLASSES=config.CLASSES, freeze_all=True, freeze_till=None):
 
     )
     return ny_modellen
+
+
+def callbacks(base_dir="."):
+
+    """
+    Tensorboard callbacks
+    """
+    base_log_dir = config.BASE_LOG_DIR
+    tensorboard_log_dir = os.path.join(base_log_dir, "tensorboard_log_dir")
+    os.makedirs(tensorboard_log_dir, exist_ok=True)
+
+    tensorboard_cb = tf.keras.callbacks.TensorBoard(log_dir=tensorboard_log_dir)
+
+    """
+    Skapa checkpoint callbacks
+    """
+    checkpoint_file = os.path.join(config.CHECKPOINT_DIR, "vgg_19model_checkpoint.h5")
+    os.makedirs(config.CHECKPOINT_DIR, exist_ok=True)
+
+    checkpoint_cb = tf.keras.callbacks.ModelCheckpoint(
+        filepath = checkpoint_file,
+        save_best_only=True
+    )
+    callback_list = [tensorboard_cb, checkpoint_cb]
+
+    return callback_list
+
+
     
 if __name__ == '__main__':
     #save_vgg_19_model()   # Spara Base h5 filen
