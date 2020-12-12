@@ -45,3 +45,36 @@ VGG:s fullständiga namn är Visual Geometry Group, som tillhör Institutionen f
             classifier_activation: A `str` eller kan kallas. Aktiveringsfunktionen som ska användas på det "översta" skiktet. Ignoreras om inte 'include_top = True'. 
             Uppsättning `classifier_activation = Ingen 'för att returnera logiterna för" topp "-skiktet.
 
+
+Mapping:
+
+    -- Logs                                                
+        ==> train
+        ==> valid
+          Tensorboard logs
+    --  Dataset
+        ==> class-1 ()
+        ==> class-2
+    
+    -- Utils
+        ==> config.py 
+        ==> data_preprocessing.py
+        ==> model.py
+    
+            ---- träningsprocesskrav 
+                                --- models överpassning
+                                --- Spara modellen
+                                    
+                                    --- Skapa VGG19_modellen
+                                        -->-Checkpoint
+                --- config.py
+                --- data_preprocessing.py
+                --- model.py
+
+            ---- Prediktionsprocess
+                 --- config.py
+                 --- data_preprocessing.py
+
+
+    
+         
