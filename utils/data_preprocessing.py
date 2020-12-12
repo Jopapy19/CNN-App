@@ -32,7 +32,7 @@ def train_valid_generator(
 
 
     if data_augmentation:
-        train_datagen=tf.keras.preprocessing.image.ImageDataGenerator(
+        train_datagen= tf.keras.preprocessing.image.ImageDataGenerator(
             rotation_range=40,
             horizontal_flip=True,
             width_shift_range=0.2,

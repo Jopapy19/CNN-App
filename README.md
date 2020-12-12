@@ -77,4 +77,10 @@ Mapping:
 
 
     
-         
+Kommand:
+1- python utils/train.py
+2- tensorboard --logdir base_log_dir/tensorboard_log_dir/
+     
+     - (crtl + klick) http://localhost:6006/
+
+     
