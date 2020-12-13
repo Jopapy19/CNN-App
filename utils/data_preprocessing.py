@@ -75,8 +75,8 @@ def hantera_input_data(input_image):
          [ndArray]: [Ändra storlek och uppdaterad dimensionerad bild]
      """
     # bild av dataförberedelse
-     final_img = np.expand_dims(resized_input_img, axis=0)
-     return final_img
+    final_img = np.expand_dims(resized_input_img, axis=0)
+    return final_img
 
 #print(help(hantera_input_data))  # print all defined functions summary
 

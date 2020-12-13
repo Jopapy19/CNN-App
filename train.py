@@ -22,7 +22,7 @@ def get_unique_model_name(specific_name="VGG19_modell"):
     return model_file_path
 
 def train():
-    ny_modell = model.custom_model()
+    ny_modellen = model.custom_model()
     callbacks = model.callbacks()
     train_generator, valid_generator = dp.train_valid_generator()
 
@@ -37,7 +37,7 @@ def train():
     steps_per_epoch = train_generator.samples // train_generator.batch_size   
     validation_steps =  valid_generator.samples // valid_generator.batch_size
 
-    ny_modell.fit(
+    ny_modellen.fit(
         train_generator, 
         validation_data = valid_generator,
         epochs=config.EPOCHS, 
@@ -47,7 +47,7 @@ def train():
 
     #Spara modellen
     model_file_path = get_unique_model_name()
-    ny_modell.save(model_file_path)
+    ny_modellen.save(model_file_path)
     print(f"sparas på följande läge\n ==> {model_file_path}")
 
 if __name__ == "__main__":
