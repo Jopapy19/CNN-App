@@ -8,7 +8,7 @@ import utils.config as config
 import tensorflow as tf
 import utils.data_preprocessing as dp
 import matplotlib.pyplot as plt
-#   from utils import model
+#from utils import model
 
 
 class Predict:
@@ -21,7 +21,7 @@ class Predict:
         self.ny_modellen = tf.keras.models.load_model(self.latest_model_path)
 
     def get_latest_model_path(self):
-        current_models = os.listdir(config.TRAINED_MODEL_DIR)
+        current_models = os.listdir(config.TRAINED_MODEL_DIR) 
         latest_model = sorted(current_models)[-1]
         self.latest_model_path = os.path.join(
             config.TRAINED_MODEL_DIR, latest_model)

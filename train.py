@@ -14,7 +14,6 @@ from utils import model
 #from sklearn.preprocessing import LabelEncoder
 
 
-
 def get_unique_model_name(specific_name="VGG19_modell"):
     model_fileName = time.strftime(f"{specific_name}_at_%Y%m%d_%H%M%S.h5")
     os.makedirs(config.TRAINED_MODEL_DIR, exist_ok=True)
