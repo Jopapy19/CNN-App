@@ -84,3 +84,9 @@ Kommand:
      - (crtl + klick) http://localhost:6006/
 
      
+
+
+
+🙌🧲För att förbättra noggrannheten kan vi enkelt använda en förutbildad datasetbild. Vår idé är att implementera Vgg med 19 lager eftersom Vgg 16 förekommer i de flesta forskningspapper.
+- Api kan också exponeras för slutanvändaren genom att använda Flask / Django framework.
+
